@@ -2,6 +2,7 @@ package com.demo.dao;
 
 import java.util.List;
 
+
 import com.demo.pojo.Admin;
 
 public interface AdminDao {

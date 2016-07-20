@@ -2,10 +2,19 @@ package com.demo.pojo;
 
 import java.sql.Timestamp;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+
+@Entity
+@Table(name="Admin")
 public class Admin {
 	
+	@Id
+	@GeneratedValue
 	private int idAd;
 	private String nombre;
 	private String cargo;

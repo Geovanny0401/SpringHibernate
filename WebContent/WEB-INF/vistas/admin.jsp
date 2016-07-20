@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
 <body>
 	<h1>Admin.jsp</h1>
 	<sf:form action="${pageContext.request.contextPath}/admin/save"
-		method="POST" commandName="admin">
+		method="post" commandName="admin">
 		<table>
             <tr>
             <c:if test="${admin.idAd ne 0}">

@@ -48,14 +48,17 @@ public class adminController {
 	public String handleAdmin(@ModelAttribute("admin") Admin adminform, 
 			Model model, RedirectAttributes rd )
 	{
-		
+		adminService.SaveOrUpdate(adminform);
+		rd.addFlashAttribute("resultado", "Cambios realizados con éxito");
 		return "redirect:/admin";
-	}	
+	}
+	
 	@RequestMapping("/admin/{idAd}/update")
 	public String ShowUpdate(Model model, @PathVariable("idAd") int id)
 	{
 		return "admin";
 	}
+	
 	@RequestMapping("/admin/{idAd}/delete")
 	public String delete(@PathVariable("idAd") int idAd,
 			RedirectAttributes ra)
