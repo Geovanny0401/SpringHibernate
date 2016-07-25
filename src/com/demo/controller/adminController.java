@@ -56,14 +56,17 @@ public class adminController {
 	@RequestMapping("/admin/{idAd}/update")
 	public String ShowUpdate(Model model, @PathVariable("idAd") int id)
 	{
+		Admin admin=adminService.FinById(id);
+		model.addAttribute("admin",admin);
 		return "admin";
 	}
 	
 	@RequestMapping("/admin/{idAd}/delete")
 	public String delete(@PathVariable("idAd") int idAd,
-			RedirectAttributes ra)
+			RedirectAttributes rd)
 	{
-		   
+		   adminService.delete(idAd);
+		   rd.addFlashAttribute("Resultado", "Registro Eliminado Sastifactoriamente");
 			return "redirect:/admin";
 	}
 }

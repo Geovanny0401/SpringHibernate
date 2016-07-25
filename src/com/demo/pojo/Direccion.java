@@ -1,14 +1,34 @@
 package com.demo.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+@Entity
+@Table(name="Direccion")
 public class Direccion {
 
+	@Id
+	@GeneratedValue
+	private int idDir;
+	
 	private String calle;
 	private String cp;
+	
+	@ManyToOne
+	@JoinColumn(name="idAd")
+	private Admin admin;
+
+	public Direccion() {
+
+	}
 
 	public Direccion(String calle, String cp) {
 
@@ -16,23 +36,48 @@ public class Direccion {
 		this.cp = cp;
 	}
 
-	@Autowired
-	public void setCalle(@Value("Cr 16 N 45F 42")String calle) {
+	public int getIdDir() {
+		return idDir;
+	}
+
+
+	public void setIdDir(int idDir) {
+		this.idDir = idDir;
+	}
+
+
+	public String getCalle() {
+		return calle;
+	}
+
+
+	public void setCalle(String calle) {
 		this.calle = calle;
 	}
 
-	@Autowired
-	public void setCp(@Value("123")String cp) {
+
+	public String getCp() {
+		return cp;
+	}
+
+
+	public void setCp(String cp) {
 		this.cp = cp;
 	}
 
-	public Direccion() {
+	public Admin getAdmin() {
+		return admin;
+	}
 
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 
 	@Override
 	public String toString() {
-		return "Direccion [calle=" + calle + ", cp=" + cp + "]";
+		return "Direccion [idDir=" + idDir + ", calle=" + calle + ", cp=" + cp + "]";
 	}
+	
+	
 
 }

@@ -3,9 +3,11 @@ package com.demo.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,26 +42,29 @@ public class AdminDaoimpl implements AdminDao {
 
 	@Override
 	public Admin findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Criteria crit = getSession().createCriteria(Admin.class);
+		crit.add(Restrictions.eq("idAd", id));
+		return (Admin) crit.uniqueResult();
 	}
 
 	@Override
 	public List<Admin> finByNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria crit = getSession().createCriteria(Admin.class);
+		crit.add(Restrictions.eq("nombre", "%" + nombre + "%"));
+		return crit.list();
 	}
 
 	@Override
 	public void update(Admin admin) {
 		// TODO Auto-generated method stub
-		
+	     getSession().update(admin);	
 	}
 
 	@Override
-	public void delete(int idAd) {
+	public void delete(Admin admin) {
 		// TODO Auto-generated method stub
-		
+		getSession().delete(admin);
 	}
 
 	

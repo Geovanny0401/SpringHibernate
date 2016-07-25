@@ -63,9 +63,10 @@ jQuery(document).ready(function(){
 				<td><c:out value="${admin.nombre}" /></td>
 				<td><c:out value="${admin.cargo}" /></td>
 				<td><c:out value="${admin.fechaCreacion}" /></td>
-				<td align="center"><a
-					href='<c:url value="/admin/${admin.idAd}/update"/>'>Actualizar</a>
-					| <a class="confirm"
+				<td align="center">
+				<a	href='<c:url value="/direccion/${admin.idAd}"/>'>Direcciones</a>
+				<a	href='<c:url value="/admin/${admin.idAd}/update"/>'>Actualizar</a>
+				<a class="confirm"
 					href='<c:url value="/admin/${admin.idAd}/delete"/>'>Eliminar</a>
 			</tr>
 		</c:forEach>
